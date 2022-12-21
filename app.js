@@ -1,9 +1,9 @@
-function main () {
+(function() {
     // variabile
     let result = document.querySelector(".result");
     let buttons = document.querySelectorAll(".buttons");
-    let clear = document.querySelector(".clear");
-    let equal = document.querySelector(".equal");
+    let equal = document.querySelector(".btn-equal");
+    let clear = document.querySelector(".btn-clear");
 
     // functie atasata pe fiecare 'button' din .buttons (toate butoanele)
     buttons.forEach(function(button){
@@ -16,5 +16,18 @@ function main () {
             result.value += value;
         })
     })
-}
-main ();
+
+    equal.addEventListener('click', function(e){
+        if(result.value === ''){
+            result.value = "";
+        }else{
+            let answer = eval(result.value);
+            result.value = answer;
+        }
+    });
+
+    clear.addEventListener('click', function(e){
+        result.value = "";
+    })
+
+})();
